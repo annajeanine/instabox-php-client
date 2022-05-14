@@ -49,7 +49,6 @@ class Connection
                 'body' => $requestBody
             ];
 
-            var_dump( $requestBody);
             $response = $this->client->request($method, $url, $options);
         } catch (ConnectException $exception) {
             throw new ConnectException(
