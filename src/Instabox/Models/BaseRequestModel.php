@@ -63,11 +63,6 @@ class BaseRequestModel
         return null;
     }
 
-    public function __isset($key)
-    {
-        return isset($this->attributes[$key]);
-    }
-
     public function __set($key, $value)
     {
         if ($this->isFillable($key)) {
