@@ -15,4 +15,15 @@ class Sender extends BaseNestedModel
         'country_code',
         'warehouse_id',
     ];
+
+    public function getCountry(): string
+    {
+        return match ($this->country_code) {
+            'SE' => 'Sweden',
+            'DK' => 'Denmark',
+            'NO' => 'Norway',
+            'NL' => 'Netherlands',
+            'DE' => 'Germany'
+        };
+    }
 }

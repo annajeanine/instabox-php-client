@@ -9,6 +9,7 @@ class Recipient extends BaseNestedModel
     public array $fillable = [
         'name',
         'street',
+        'street2',
         'zip',
         'city',
         'country_code',
@@ -20,5 +21,16 @@ class Recipient extends BaseNestedModel
 
     public function getPhoneNumber() {
         // TODO: The label displays only one phone number, but in what priority should these be displayed?
+    }
+
+    public function getCountry(): string
+    {
+        return match ($this->country_code) {
+            'SE' => 'Sweden',
+            'DK' => 'Denmark',
+            'NO' => 'Norway',
+            'NL' => 'Netherlands',
+            'DE' => 'Germany'
+        };
     }
 }

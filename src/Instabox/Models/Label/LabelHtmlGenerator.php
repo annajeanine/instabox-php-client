@@ -118,6 +118,8 @@ class LabelHtmlGenerator
 
     protected function addDeliveryInformation(Recipient $recipient, Sender $sender): string
     {
+        $recipientCountry = $recipient->getCountry();
+        $senderCountry = $sender->getCountry();
         return "
             <div class='delivery-information clearfix'>
             <div class='delivery-address'>
@@ -126,13 +128,13 @@ class LabelHtmlGenerator
                 <p>$recipient->mobile_phone_number</p>
                 <p>$recipient->street</p>
                 <p>Floor 1</p>
-                <p>$recipient->zip $recipient->city, $recipient->country_code</p>
+                <p>$recipient->zip $recipient->city, $recipientCountry</p>
             </div>
             <div class='sender-address'>
                 <h3>Sender:</h3>
                 <p>$sender->name</p>
                 <p>$sender->street</p>
-                <p>$sender->zip $sender->city, $sender->country_code</p>
+                <p>$sender->zip $sender->city, $senderCountry</p>
             </div>
         </div>
     ";
