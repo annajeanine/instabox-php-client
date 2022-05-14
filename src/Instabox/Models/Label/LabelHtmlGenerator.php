@@ -10,12 +10,17 @@ use Picqer\Barcode\BarcodeGeneratorPNG;
 class LabelHtmlGenerator
 {
     protected Order $order;
+
     public function __construct(Order $order)
     {
         $this->order = $order;
     }
 
-
+    /**
+     * Method to generate the HTML needed to convert to label pdf
+     *
+     * @return string
+     */
     public function getHtml(): string
     {
         $order = $this->order;
@@ -80,7 +85,7 @@ class LabelHtmlGenerator
                 font-size: 48px;
             }
             .barcode {
-                width: 80%;
+                width: 90%;
                 float: left
             }
             .barcode-information {
@@ -90,6 +95,20 @@ class LabelHtmlGenerator
                 padding-left: 10px;
             }
             .instabox-information {
+                text-align: center;
+                padding-top: 10px;
+            }
+            .parcel-digit {
+                font-size: 28px;
+                font-weight: 700;
+            }
+            .parcel-barcode {
+                padding-left: 90px;
+                font-size: 12px;
+                font-weight: 700;
+                
+            }
+            .instabox-contact {
                 text-align: center;
                 padding-top: 10px;
             }
@@ -132,10 +151,6 @@ class LabelHtmlGenerator
         ";
     }
 
-    /**
-     * @param Order $order
-     * @return string
-     */
     protected function addServiceType(Order $order): string
     {
         return "
@@ -144,10 +159,6 @@ class LabelHtmlGenerator
     </div>";
     }
 
-    /**
-     * @param mixed $deliveryOption
-     * @return string
-     */
     protected function addDeliveryOption(mixed $deliveryOption): string
     {
         return "
@@ -156,52 +167,41 @@ class LabelHtmlGenerator
     </div>";
     }
 
-    /**
-     * @param string $barcode
-     * @return string
-     */
     protected function addBarcode(string $barcode): string
     {
-        $lastThreeDigitsParcelId = substr($this->order->parcel_id, -3);
+        // The logo needs to display the last three digits of the parcel
+        $lastThreeDigitsParcelId = $this->order->getLastThreeDigitsOfParcelId();
+
         return "
-    <div class='barcode-information clearfix'>
+            <div class='barcode-information clearfix'>
         <div class='barcode'>
             $barcode
         </div>
         <div class='parcel-identifier'>
-            <p>$lastThreeDigitsParcelId</p>
+            <p class='parcel-digit'>$lastThreeDigitsParcelId[0]</p>
+            <p class='parcel-digit'>$lastThreeDigitsParcelId[1]</p>
+            <p class='parcel-digit'>$lastThreeDigitsParcelId[2]</p>
         </div>
     </div>
-    ";
+        ";
     }
 
-    /**
-     * @param Order $order
-     * @return string
-     */
     protected function addParcelId(Order $order): string
     {
         return "
-<div>
-        <p>$order->parcel_id</p>
-    </div>";
+        <div class='parcel-barcode'>
+            <p>$order->parcel_id</p>
+        </div>";
     }
 
-    /**
-     * @return string
-     */
     protected function addInstaboxContactInformation(): string
     {
         return "
-    <div class='instabox-contact'>
-        <p>www.instabox.io</p>
-    </div>";
+            <div class='instabox-contact'>
+            <p>www.instabox.io</p>
+        </div>";
     }
 
-    /**
-     * @param string $image
-     * @return string
-     */
     protected function addInstaboxLogo(string $image): string
     {
         return "

@@ -46,4 +46,9 @@ class Order extends BaseRequestModel
 
     protected string $url = 'https://webshopintegrations.instabox.se/v2/orders';
     protected string $urlSandbox = 'https://webshopintegrations-sandbox.instabox.se/v2/orders';
+
+    public function getLastThreeDigitsOfParcelId(): string
+    {
+        return substr($this->parcel_id, -3);
+    }
 }
