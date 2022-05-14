@@ -22,7 +22,6 @@ class Label
         $dompdf->loadHtml($html->getHtml());
         $dompdf->render();
 
-        // For testing purposes set pdf to local file
-        // file_put_contents('test.pdf', $dompdf->output());
+        return $dompdf->output();
     }
 }
