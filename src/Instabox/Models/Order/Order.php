@@ -2,7 +2,7 @@
 
 namespace Instabox\Models\Order;
 
-use Instabox\Models\BaseModel;
+use Instabox\Models\BaseRequestModel;
 use Instabox\Models\Order\NestedModels\DeliveryOption;
 use Instabox\Models\Order\NestedModels\Details;
 use Instabox\Models\Order\NestedModels\IdentificationOptions;
@@ -10,7 +10,7 @@ use Instabox\Models\Order\NestedModels\Recipient;
 use Instabox\Models\Order\NestedModels\Sender;
 use Instabox\Models\Traits\Storable;
 
-class Order extends BaseModel
+class Order extends BaseRequestModel
 {
     use Storable;
 

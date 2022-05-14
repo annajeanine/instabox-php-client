@@ -4,7 +4,7 @@ namespace Instabox\Models;
 
 use Instabox\Connection;
 
-class BaseModel
+class BaseRequestModel
 {
     protected Connection $connection;
 

@@ -2,6 +2,7 @@
 
 namespace Instabox;
 
+use Instabox\Models\Label\Label;
 use Instabox\Models\Order\Order;
 
 class Instabox
@@ -16,5 +17,10 @@ class Instabox
     public function order(): Order
     {
         return new Order($this->connection);
+    }
+
+    public function label(Order $order): Label
+    {
+        return new Label($order);
     }
 }
