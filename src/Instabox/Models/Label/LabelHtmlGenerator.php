@@ -162,13 +162,14 @@ class LabelHtmlGenerator
      */
     protected function addBarcode(string $barcode): string
     {
+        $lastThreeDigitsParcelId = substr($this->order->parcel_id, -3);
         return "
     <div class='barcode-information clearfix'>
         <div class='barcode'>
             $barcode
         </div>
         <div class='parcel-identifier'>
-            <p>647</p>
+            <p>$lastThreeDigitsParcelId</p>
         </div>
     </div>
     ";
