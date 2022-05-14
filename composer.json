@@ -1,0 +1,20 @@
+{
+  "name": "annajeanine/instabox-php-client",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anna van Brecht",
+      "email": "ajvanbrecht@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "guzzlehttp/guzzle": "^7.4",
+    "spatie/data-transfer-object": "^3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Instabox\\": "src/Instabox"
+    }
+  }
+}
