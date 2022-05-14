@@ -3,25 +3,26 @@
 namespace Instabox\Models\Label;
 
 use Dompdf\Dompdf;
-use Dompdf\Options;
 use Instabox\Models\Order\Order;
-use Picqer\Barcode\BarcodeGeneratorPNG;
 
 class Label
 {
     protected Order $order;
     public function __construct(Order $order)
     {
+        $this->order = $order;
     }
 
     public function generateLabel()
     {
-        // TODO: Generate label
-    }
+        $html = new LabelHtmlGenerator($this->order);
 
-    protected function generateBarcodeImage(): string
-    {
-        $generator = new BarcodeGeneratorPNG();
-        return '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($this->order->parcel_id, $generator::TYPE_CODE_128)) . '">';
+        $dompdf = new Dompdf();
+        $dompdf->setPaper('a6');
+        $dompdf->loadHtml($html->getHtml());
+        $dompdf->render();
+
+        // For testing purposes set pdf to local file
+        // file_put_contents('test.pdf', $dompdf->output());
     }
 }

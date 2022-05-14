@@ -17,4 +17,8 @@ class Recipient extends BaseNestedModel
         'work_phone_number',
         'email_address',
     ];
+
+    public function getPhoneNumber() {
+        // TODO: The label displays only one phone number, but in what priority should these be displayed?
+    }
 }
