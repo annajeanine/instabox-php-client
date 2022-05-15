@@ -67,7 +67,7 @@ Instabox provides support to create a label through their API. But, as stated in
 
 > Please avoid to use this if you can create labels on your own. This function is designed for really small merchants. Note that an order needs to be created first and then the label can be fetched. So it can take a few minutes before the label is available.
 
-Therefore, this client provides generating a label through the usage of `dompdf`. To generate a label for a order use:
+Therefore, this client provides generating a label through the usage of `dompdf`. Therefore, there is no need to wait and a label can be generated directly after making the order. To generate a label for a order use:
 
 ```
 $label = $instabox->label($order);
