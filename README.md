@@ -76,6 +76,9 @@ $generatedLabel = $label->generateLabel();
 file_put_contents('example-label.pdf', $generatedLabel);
 ```
 
+### Example
+A full example of the implementation can be found [here](src/examples/script.php).
+
 ### Credits
 The setup of the API is inspired by the set-up of Picqer PHP clients:
 - https://github.com/picqer/sendcloud-php-client
