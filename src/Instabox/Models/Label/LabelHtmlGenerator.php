@@ -127,7 +127,7 @@ class LabelHtmlGenerator
                 <p>$recipient->name</p>
                 <p>$recipient->mobile_phone_number</p>
                 <p>$recipient->street</p>
-                <p>Floor 1</p>
+                <p>$recipient->street2</p>
                 <p>$recipient->zip $recipient->city, $recipientCountry</p>
             </div>
             <div class='sender-address'>
