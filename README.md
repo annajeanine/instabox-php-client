@@ -89,3 +89,4 @@ The setup of the API is inspired by the set-up of Picqer PHP clients:
   - Find out which phone number of recipient should be used. 
 - Improve unhappy path with response examples 
 - Add tests
+- Explore possibility of using spatie DTO for client
