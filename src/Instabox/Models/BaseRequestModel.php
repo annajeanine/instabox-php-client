@@ -70,6 +70,11 @@ class BaseRequestModel
         }
     }
 
+    public function __isset($key)
+    {
+        return isset($this->attributes[$key]);
+    }
+
     public function getUrl(): string
     {
         if ($this->connection->isSandbox()) {
